@@ -1,0 +1,4 @@
+{"level":"info","message":"hostid=aras-ThinkPad-E14-Gen-4:220448:lralhv3m, ipaddress=127.0.0.1, method=post, url=http://localhost:3000/notes, statuscode=201, message:Catatan berhasil ditambahkan","timestamp":"2024-01-12 19:09:39"}
+{"level":"info","message":"hostid=aras-ThinkPad-E14-Gen-4:221297:lraljexb, ipaddress=127.0.0.1, method=get, url=http://localhost:3000/notes/ZDVC6UyLMrLTFXh8, statuscode=200, message:undefined","timestamp":"2024-01-12 19:10:11"}
+{"level":"info","message":"hostid=aras-ThinkPad-E14-Gen-4:221446:lralkgq0, ipaddress=127.0.0.1, method=get, url=http://localhost:3000/notes/ZDVC6UyLMrLTFXh8, statuscode=200, message:undefined","timestamp":"2024-01-12 19:11:01"}
+{"level":"info","message":"hostid=aras-ThinkPad-E14-Gen-4:222030:lralnqqh, ipaddress=127.0.0.1, method=get, url=http://localhost:3000/notes/ZDVC6UyLMrLTFXh8, statuscode=201, message:Catatan berhasil ditampilkan","timestamp":"2024-01-12 19:13:33"}
