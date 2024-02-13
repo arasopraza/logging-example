@@ -6,29 +6,9 @@
     "auditLog": "/home/aras/javascript-projects/logging-example/src/logger/.af79bdf7145fb2060f0cceaefa194ab96fa3bc34-audit.json",
     "files": [
         {
-            "date": 1704968187035,
-            "name": "/home/aras/javascript-projects/logging-example/src/logger/application-2024-01-11-17.log",
-            "hash": "15aa5b60a5713cb5db6b8be3b12c6219e9376ca324d09b6bd635146bc2a8b815"
-        },
-        {
-            "date": 1704974485835,
-            "name": "/home/aras/javascript-projects/logging-example/src/logger/application-2024-01-11-19.log",
-            "hash": "6c93c88fd3c85db9d0199f4efdc049058d284399665163d55600f8df5485a67b"
-        },
-        {
-            "date": 1704993436821,
-            "name": "/home/aras/javascript-projects/logging-example/src/logger/application-2024-01-12-00.log",
-            "hash": "e45c83668691f792ebe1d91707016030f64642335716ac0f69e49e74718f4454"
-        },
-        {
-            "date": 1705061096470,
-            "name": "/home/aras/javascript-projects/logging-example/src/logger/application-2024-01-12-19.log",
-            "hash": "d5e584334e2391dec659ec96934d25a13f9a45b325c7fb4b8df1195c6555537c"
-        },
-        {
-            "date": 1705065094130,
-            "name": "/home/aras/javascript-projects/logging-example/src/logger/application-2024-01-12-20.log",
-            "hash": "bc9999d94e5d268757669511c6db80b1050df70aca192f147ffdfaa22ba359ff"
+            "date": 1707815580020,
+            "name": "/home/aras/javascript-projects/logging-example/src/logger/application-2024-02-13-16.log",
+            "hash": "f78f91bb86601f2992656bc2885c6c330fb62150ececb313df10aa0de4dc4b26"
         }
     ],
     "hashType": "sha256"
