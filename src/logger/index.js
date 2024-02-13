@@ -19,7 +19,7 @@ const logger = createLogger({
     format.errors({ stack: true }),
     format.splat(),
     format.json(),
-    format.splat(), 
+    format.splat(),
   ),
   transports: [
     transport
