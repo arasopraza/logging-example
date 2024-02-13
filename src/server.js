@@ -35,7 +35,7 @@ const init = async () => {
       return newResponse;
     }
 
-    logger.log('info', `userIP=${request.info.remoteAddress}, host=${os.hostname}, method=${request.method}, path=${request.path}`);
+    logger.log('info', `userIP=${request.info.remoteAddress}, host=${os.hostname}, method=${request.method}, path=${request.path}, payload=${JSON.stringify(response.output.payload)}`);
     return h.continue;
   });
 
