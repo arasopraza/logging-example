@@ -16,14 +16,12 @@
     "@hapi/hapi": "^21.3.2",
     "dotenv": "^16.3.1",
     "nanoid": "^3.3.7",
-    "pg": "^8.11.3",
     "winston": "^3.11.0",
     "winston-cloudwatch": "^6.2.0",
     "winston-daily-rotate-file": "^4.7.1"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
-    "node-pg-migrate": "^6.2.2",
     "nodemon": "^3.0.2"
   }
 }

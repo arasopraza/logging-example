@@ -1,61 +1,132 @@
-class NotesHandler {
-  constructor(service) {
-    this._service = service;
+const notes = require('./notes');
+const { nanoid } = require('nanoid');
 
+class NotesHandler {
+  constructor() {
     this.postNoteHandler = this.postNoteHandler.bind(this);
+    this.getAllNotesHandler = this.getAllNotesHandler.bind(this);
     this.getNoteByIdHandler = this.getNoteByIdHandler.bind(this);
+    this.editNoteByIdHandler = this.editNoteByIdHandler.bind(this);
     this.deleteNoteByIdHandler = this.deleteNoteByIdHandler.bind(this);
   }
 
   async postNoteHandler(request, h) {
     const { title = 'untitled', body, tags } = request.payload;
 
-    const noteId = await this._service.addNote({
-      title, body, tags,
-    });
+    const id = nanoid(16);
+
+    const newNote = {
+      id, title, body, tags,
+    };
+
+    notes.push(newNote);
+
+    const isSuccess = notes.filter((note) => note.id === id).length > 0;
+
+    if (isSuccess) {
+      const response = h.response({
+        status: 'success',
+        message: 'Catatan berhasil ditambahkan',
+        data: {
+          noteId: id,
+        },
+      });
+      response.code(201);
+      return response;
+    }
 
     const response = h.response({
-      status: 'success',
-      message: 'Catatan berhasil ditambahkan',
-      data: {
-        noteId,
-      },
+      status: 'fail',
+      message: 'Catatan gagal ditambahkan',
     });
-    response.code(201);
-
+    response.code(500);
     return response;
   }
 
-  async getNoteByIdHandler(request, h) {
+  getAllNotesHandler = () => ({
+    status: 'success',
+    data: {
+      notes,
+    },
+  });
+
+  getNoteByIdHandler = (request, h) => {
     const { id } = request.params;
 
-    const note = await this._service.getNoteById(id);
+    const note = notes.filter((n) => n.id === id)[0];
+
+    if (note !== undefined) {
+      return {
+        status: 'success',
+        data: {
+          note,
+        },
+      };
+    }
+
     const response = h.response({
-      status: 'success',
-      message: 'Catatan berhasil ditampilkan',
-      data: {
-        note,
-      },
-    }).code(201);
-
+      status: 'fail',
+      message: 'Catatan tidak ditemukan',
+    });
+    response.code(404);
     return response;
-  }
+  };
 
-  async deleteNoteByIdHandler(request, h) {
+  editNoteByIdHandler = (request, h) => {
     const { id } = request.params;
 
-    const note = await this._service.deleteNoteById(id);
+    const { title, tags, body } = request.payload;
+    const updatedAt = new Date().toISOString();
+
+    const index = notes.findIndex((note) => note.id === id);
+
+    if (index !== -1) {
+      notes[index] = {
+        ...notes[index],
+        title,
+        tags,
+        body,
+        updatedAt,
+      };
+
+      const response = h.response({
+        status: 'success',
+        message: 'Catatan berhasil diperbarui',
+      });
+      response.code(200);
+      return response;
+    }
 
     const response = h.response({
-      status: 'success',
-      message: 'Catatan berhasil dihapus',
-      data: {
-        note,
-      },
-    }).code(202)
-
+      status: 'fail',
+      message: 'Gagal memperbarui catatan. Id tidak ditemukan',
+    });
+    response.code(404);
     return response;
-  }
+  };
+
+  deleteNoteByIdHandler = (request, h) => {
+    const { id } = request.params;
+
+    const index = notes.findIndex((note) => note.id === id);
+
+    if (index !== -1) {
+      notes.splice(index, 1);
+      const response = h.response({
+        status: 'success',
+        message: 'Catatan berhasil dihapus',
+      });
+      response.code(200);
+      return response;
+    }
+
+    const response = h.response({
+      status: 'fail',
+      message: 'Catatan gagal dihapus. Id tidak ditemukan',
+    });
+    response.code(404);
+    return response;
+  };
 }
 
 module.exports = NotesHandler;
