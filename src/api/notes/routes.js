@@ -1,4 +1,4 @@
-const routes = (handler) => [
+const routes = [
   {
     method: 'POST',
     path: '/notes',
@@ -6,8 +6,18 @@ const routes = (handler) => [
   },
   {
     method: 'GET',
+    path: '/notes',
+    handler: handler.getAllNotesHandler,
+  },
+  {
+    method: 'GET',
     path: '/notes/{id}',
     handler: handler.getNoteByIdHandler,
+  },
+  {
+    method: 'PUT',
+    path: '/notes/{id}',
+    handler: handlrer.editNoteByIdHandler,
   },
   {
     method: 'DELETE',
